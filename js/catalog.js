@@ -3,8 +3,13 @@
 'use strict';
 
 // Set up an empty cart for use on this page.
-state.cart = new Cart([]);
-
+state.cart = localStorage.cart ? new Cart(JSON.parse(localStorage.cart)) : new Cart([]);
+if(state.cart.items){
+  state.cart.updateCounter();
+  for (let i = 0; i < state.cart.items.length; i++){
+    updateCartPreview(state.cart.items[i]);
+  }
+}
 // On screen load, we call this method to put all of the product options
 // (the things in the state.allProducts array) into the drop down list.
 function populateForm() {
@@ -12,11 +17,10 @@ function populateForm() {
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
   for (let i in state.allProducts) {
-    let optionElement = document.createElement('option');
-    optionElement.textContent = state.allProducts[i].name;
+    const optionElement = document.createElement('option');
     optionElement.value = state.allProducts[i].name;
+    optionElement.textContent = state.allProducts[i].name;
     selectElement.appendChild(optionElement);
-    console.log(state.allProducts[i].name);
   }
 
 }
@@ -27,13 +31,13 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
-  preventDefault(event);
+  event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
   state.cart.saveToLocalStorage();
   state.cart.updateCounter();
-  updateCartPreview();
-
+  updateCartPreview(state.cart.items[state.cart.items.length -1]);
+  event.target.reset();
 }
 
 // TODO: Add the selected item and quantity to the cart
@@ -47,14 +51,17 @@ function addSelectedItemToCart() {
 }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
-function updateCartPreview() {
+function updateCartPreview(item) {
   // TODO: Get the item and quantity from the form
-  let item = document.getElementById('items').value;
+  //let  = document.getElementById('items').value;
   // TODO: Add a new element to the cartContents div with that information
+  const product = item.product;
+  const quantity = item.quantity;
   let cartContents = document.getElementById('cartContents');
   let cartItem = document.createElement('div');
-  cartItem.textContent = `${item} : ${state.cart.items[item].quantity}`;
+  cartItem.textContent = quantity + ': ' + product;
   cartContents.appendChild(cartItem);
+  console.log(item);
 }
 
 // Set up the "submit" event listener on the form.

@@ -7,43 +7,41 @@ const state = {
 };
 
 // Cart constructor.
-const Cart = function(items) {
+const Cart = function (items) {
   // this.items is an array of CartItem instances.
   this.items = items;
 };
 
-Cart.prototype.addItem = function(product, quantity) {
+Cart.prototype.addItem = function (product, quantity) {
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
-  let item = new CartItem(product, quantity);
+  let newItem = new CartItem(product, quantity);
+  this.items.push(newItem);
 };
 
-Cart.prototype.saveToLocalStorage = function() {
+Cart.prototype.saveToLocalStorage = function () {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
-  let cartString = JSON.stringify(this.items);
-  localStorage.setItem('cart', cartString);
+  localStorage.setItem('cart', JSON.stringify(this.items));
 };
 
-Cart.prototype.removeItem = function(item) {
+Cart.prototype.removeItem = function (item) {
   // TODO: Fill in this instance method to remove one item from the cart.
-  let index = this.items.indexOf(item);
-  this.items.splice(index, 1);
-  this.saveToLocalStorage();
+  this.items.splice(item, 1);
   // Note: You will have to decide what kind of parameter to pass in here!
 };
 
-Cart.prototype.updateCounter = function() {
+Cart.prototype.updateCounter = function () {
   // TODO: Update the cart count in the header nav with the number of items in the Cart
-  let counter = document.getElementById('cart-count');
-  counter.textContent = this.items.length;
+  const cartCount = document.getElementById('itemCount');
+  cartCount.textContent = this.items.length;
 }
 
-const CartItem = function(product, quantity) {
+const CartItem = function (product, quantity) {
   this.product = product;
   this.quantity = quantity;
 };
 
 // Product contructor.
-const Product = function(filePath, name) {
+const Product = function (filePath, name) {
   this.filePath = filePath;
   this.name = name;
 };

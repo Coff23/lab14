@@ -1,6 +1,6 @@
 /* TODO: Make it awesome */
 html body {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -8,11 +8,18 @@ header {
     font-size: 50px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
 }
 
-header h1 {
+body header h1 {
     font-weight: bold;
+}
+
+body section h1 {
+    font-weight: bold;
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 40px;
 }
 
 header ul {
@@ -24,6 +31,16 @@ header ul {
 ol {
     list-style-type: number;
     font-size: 25px;
+    margin-left: 20px;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 35px;
+    margin-bottom: 10px;
+    margin-top: 40px;
 }
 
 .card {
@@ -31,7 +48,26 @@ ol {
     font-size: 40px;
 }
 
+#items {
+    font-size: 30px;
+}
+
+#quantity {
+    font-size: 30px;
+}
+
+label {
+    margin: 5px;
+}
+
+input {
+    font-size: 25px;
+    margin-top: 20px;
+
+}
+
 footer {
     text-align: center;
     margin-top: 50px;
+    font-size: 25px;
 }

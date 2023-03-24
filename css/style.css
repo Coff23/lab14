@@ -36,6 +36,21 @@ ol {
     margin-bottom: 50px;
 }
 
+tr {
+    border-bottom: thin solid black;
+}
+
+
+
+td {
+    border-bottom: thin solid black;
+    margin: 20px;
+}
+
+#cart {
+    border: thin solid black;
+}
+
 legend {
     font-weight: bold;
     font-size: 35px;

@@ -2,6 +2,14 @@
 html body {
     width: 90%;
     margin: 0 auto;
+    background-color: rgb(7, 11, 24);
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: white;
 }
 
 header {
@@ -37,18 +45,21 @@ ol {
 }
 
 tr {
-    border-bottom: thin solid black;
+    border-bottom: thin solid silver;
 }
 
 
 
 td {
-    border-bottom: thin solid black;
+    border-bottom: thin solid silver;
     margin: 20px;
+    text-align: center;
 }
 
 #cart {
     border: thin solid black;
+    width: 700px;
+    margin-left: 700px;
 }
 
 legend {
